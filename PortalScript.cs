@@ -11,12 +11,13 @@ public class PortalScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        shifTing = new WaitForSeconds(0.1f); 
+        shifTing = new WaitForSeconds(0.5f); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         //print(PlayeR.transform.position);
 
         //print(portaL2.transform.position);
@@ -34,7 +35,9 @@ public class PortalScript : MonoBehaviour
             {
                 allClear = false;
                 PlayeR.GetComponent<Rigidbody>().linearVelocity = PlayeR.GetComponent<playerMotioncontrol>().reversemomentum;
-                PlayeR.transform.position = portaL2.transform.position;
+                PlayeR.transform.localRotation = portaL2.transform.localRotation;
+                PlayeR.transform.position = portaL2.transform.localPosition;
+                //PlayeR.transform.rotation = new Quaternion(PlayeR.transform.rotation.x, transform.rotation.y, PlayeR.transform.rotation.z, PlayeR.transform.rotation.w);
                 portaL2.GetComponent<MeshCollider>().enabled = false;
                 portaldelaY();
             }
@@ -45,6 +48,8 @@ public class PortalScript : MonoBehaviour
             {
                 allClear = false;
                 PlayeR.GetComponent<Rigidbody>().linearVelocity = PlayeR.GetComponent<playerMotioncontrol>().reversemomentum;
+                PlayeR.transform.localRotation = portaL1.transform.localRotation;
+                //PlayeR.transform.rotation = new Quaternion(PlayeR.transform.rotation.x, transform.rotation.y, PlayeR.transform.rotation.z, PlayeR.transform.rotation.w);
                 portaL1.GetComponent<MeshCollider>().enabled = false;
                 PlayeR.transform.position = portaL1.transform.position;
                 portaldelaY();
